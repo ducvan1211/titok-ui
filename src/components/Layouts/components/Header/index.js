@@ -8,6 +8,8 @@ import styles from './Header.module.scss';
 import images from '~/asset/images';
 import { Wrapper as PopperWrapper } from '~/components/Popper';
 import AccountsItem from '~/components/AccountItem';
+import Button from '~/components/Button';
+
 const cx = classNames.bind(styles);
 function Header() {
     const [searchResult, setSearchResult] = useState([]);
@@ -47,7 +49,11 @@ function Header() {
                     </div>
                 </Tippy>
 
-                <div className={cx('actions')}></div>
+                <div className={cx('actions')}>
+                    <Button text>Upload</Button>
+
+                    <Button primary>Log in</Button>
+                </div>
             </div>
         </header>
     );
