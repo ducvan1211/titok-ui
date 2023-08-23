@@ -18,13 +18,15 @@ import {
     faArrowRightFromBracket,
 } from '@fortawesome/free-solid-svg-icons';
 
-import { faMessage, faUser, faBookmark } from '@fortawesome/free-regular-svg-icons';
+import { faUser, faBookmark } from '@fortawesome/free-regular-svg-icons';
 import styles from './Header.module.scss';
 import images from '~/asset/images';
 import { Wrapper as PopperWrapper } from '~/components/Popper';
 import AccountsItem from '~/components/AccountItem';
 import Button from '~/components/Button';
 import Menu from '~/components/Popper/Menu';
+import { MessageIcon, InboxIcon } from '~/components/Icons';
+import Image from '~/components/Image';
 const cx = classNames.bind(styles);
 
 const MENU_ITEMS = [
@@ -132,12 +134,17 @@ function Header() {
                         <>
                             <Tippy delay={[0, 100]} content="Upload" placement="bottom">
                                 <button className={cx('action-btn')}>
-                                    <FontAwesomeIcon icon={faUpload}> </FontAwesomeIcon>
+                                    <FontAwesomeIcon icon={faUpload}></FontAwesomeIcon>
+                                </button>
+                            </Tippy>
+                            <Tippy delay={[0, 100]} content="Messages" placement="bottom">
+                                <button className={cx('action-btn')}>
+                                    <MessageIcon />
                                 </button>
                             </Tippy>
                             <Tippy delay={[0, 100]} content="Inbox" placement="bottom">
                                 <button className={cx('action-btn')}>
-                                    <FontAwesomeIcon icon={faMessage}> </FontAwesomeIcon>
+                                    <InboxIcon></InboxIcon>
                                 </button>
                             </Tippy>
                         </>
@@ -150,7 +157,7 @@ function Header() {
                     )}
                     <Menu items={isLogin ? userMenu : MENU_ITEMS}>
                         {isLogin ? (
-                            <img
+                            <Image
                                 src="https://p16-sign-va.tiktokcdn.com/tos-maliva-avt-0068/9bc531d24ff2b073d346282835b7a483~c5_100x100.jpeg?x-expires=1692802800&x-signature=IogSlwv2xAK50Ulx8yQdcHbEKNE%3D"
                                 className={cx('user-avatar')}
                                 alt="Nguyen Van A"

@@ -34,7 +34,7 @@ function Menu({ children, items = [] }) {
                 }
             }}
             delay={[0, 700]}
-            offset={[12, 8]}
+            offset={[12 , 8]}
             placement="bottom-end"
             interactive={true}
             render={(attrs) => (
