@@ -11,6 +11,7 @@ function Search() {
     const [searchValue, setSearchValue] = useState('');
     const [searchResult, setSearchResult] = useState([]);
     const [showResult, setShowResult] = useState(true);
+    const [loading, setLoading] = useState(false);
     const inputSearchRef = useRef();
     const handleClear = () => {
         setSearchValue('');
@@ -21,10 +22,22 @@ function Search() {
         setShowResult(false);
     };
     useEffect(() => {
-        setTimeout(() => {
-            setSearchResult([1]);
-        }, 0);
-    }, []);
+        if (!searchValue.trim()) {
+            setSearchResult([]);
+            return;
+        }
+        setLoading(true);
+
+        fetch(`https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(searchValue)}&type=less`)
+            .then((res) => res.json())
+            .then((res) => {
+                setSearchResult(res.data);
+                setLoading(false);
+            })
+            .catch(() => {
+                setLoading(false);
+            });
+    }, [searchValue]);
     return (
         <HeadlessTippy
             interactive={true}
@@ -33,9 +46,9 @@ function Search() {
                 <div className={cx('search-result')} tabIndex="-1" {...attrs}>
                     <PopperWrapper>
                         <h4 className={cx('search-title')}>Accounts</h4>
-                        <AccountsItem></AccountsItem>
-                        <AccountsItem></AccountsItem>
-                        <AccountsItem></AccountsItem>
+                        {searchResult.map((item) => (
+                            <AccountsItem key={item.id} data={item}></AccountsItem>
+                        ))}
                     </PopperWrapper>
                 </div>
             )}
@@ -52,13 +65,13 @@ function Search() {
                     placeholder="Search accounts and videos"
                     spellCheck={false}
                 />
-                {!!searchValue && (
+                {!!searchValue && !loading && (
                     <button onClick={handleClear} className={cx('clear')}>
                         <FontAwesomeIcon icon={faCircleXmark} />
                     </button>
                 )}
 
-                {/* <FontAwesomeIcon className={cx('loading')} icon={faSpinner} /> */}
+                {loading && <FontAwesomeIcon className={cx('loading')} icon={faSpinner} />}
                 {/* loading */}
                 <button className={cx('search-btn')}>
                     <FontAwesomeIcon icon={faMagnifyingGlass} />

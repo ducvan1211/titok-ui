@@ -10,7 +10,7 @@ export const publicRoutes = [
         component: Home,
     },
     {
-        path: '/profile',
+        path: '/@:nickname',
         component: Profile,
     },
     {
