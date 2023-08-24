@@ -1,4 +1,7 @@
 import classNames from 'classnames/bind';
+import { Link } from 'react-router-dom';
+import routesConfig from '~/config/routes';
+
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -12,7 +15,6 @@ import {
     faCoins,
     faArrowRightFromBracket,
 } from '@fortawesome/free-solid-svg-icons';
-
 import { faUser, faBookmark } from '@fortawesome/free-regular-svg-icons';
 import images from '~/asset/images';
 import Button from '~/components/Button';
@@ -90,7 +92,9 @@ function Header() {
     return (
         <header className={cx('wrapper')}>
             <div className={cx('inner')}>
-                <img src={images.logo} alt="Tiktok" />
+                <Link to={routesConfig.home}>
+                    <img src={images.logo} alt="Tiktok" />
+                </Link>
                 <Search></Search>
                 <div className={cx('action')}>
                     {isLogin ? (
@@ -118,7 +122,7 @@ function Header() {
                             <Button primary>Log in</Button>
                         </>
                     )}
-                    <Menu items={isLogin ? userMenu : MENU_ITEMS}>
+                    <Menu items={isLogin ? userMenu : MENU_ITEMS} hideOnClick={false}>
                         {isLogin ? (
                             <Image
                                 src="https://p16-sign-va.tiktokcdn.com/tos-maliva-avt-0068/9bc531d24ff2b073d346282835b7a483~c5_100x100.jpeg?x-expires=1692802800&x-signature=IogSlwv2xAK50Ulx8yQdcHbEKNE%3D"

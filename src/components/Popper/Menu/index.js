@@ -6,7 +6,7 @@ import MenuItem from './MenuItem';
 import Header from './Header';
 import { useState } from 'react';
 const cx = classNames.bind(styles);
-function Menu({ children, items = [] }) {
+function Menu({ children, items = [], hideOnClick = false }) {
     const [history, setHistory] = useState([{ data: items }]);
     const current = history[history.length - 1];
 
@@ -33,8 +33,9 @@ function Menu({ children, items = [] }) {
                     setHistory((pre) => pre.slice(0, pre.length - 1));
                 }
             }}
+            hideOnClick={hideOnClick}
             delay={[0, 700]}
-            offset={[12 , 8]}
+            offset={[12, 8]}
             placement="bottom-end"
             interactive={true}
             render={(attrs) => (

@@ -10,6 +10,7 @@
     --default-layout-header-height: 60px;
     --default-layout-width: 1150px;
     --default-layout-horizontal-spacer: 24px;
+    --font-family: "IBM Plex Sans", sans-serif;
 }
 * {
     box-sizing: border-box;
@@ -20,7 +21,7 @@ html {
     font-size: 62.5%;
 }
 body {
-    font-family: "IBM Plex Sans", sans-serif;
+    font-family: var(--font-family);
     font-size: 1.6rem;
     line-height: 1.5;
     text-rendering: optimizeSpeed;
@@ -29,7 +30,7 @@ body {
 button,
 input,
 [tabindex] {
-    font-family: "IBM Plex Sans", sans-serif;
+    font-family: var(--font-family), sans-serif;
     border: none;
     outline: none;
 }
