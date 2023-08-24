@@ -36,13 +36,10 @@ const MENU_ITEMS = [
                     code: 'en',
                     title: 'English',
                 },
+
                 {
                     code: 'vi',
                     title: 'Tiếng Việt',
-                },
-                {
-                    code: 'en',
-                    title: 'English',
                 },
             ],
         },

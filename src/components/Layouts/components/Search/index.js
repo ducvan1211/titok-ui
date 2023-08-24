@@ -49,15 +49,18 @@ function Search() {
     }, [debounced]);
     return (
         <HeadlessTippy
+            appendTo={() => document.body}
             interactive={true}
             visible={showResult && searchResult.length > 0}
             render={(attrs) => (
                 <div className={cx('search-result')} tabIndex="-1" {...attrs}>
                     <PopperWrapper>
                         <h4 className={cx('search-title')}>Accounts</h4>
-                        {searchResult.map((item) => (
-                            <AccountsItem key={item.id} data={item}></AccountsItem>
-                        ))}
+                        <div className={cx('account-list')}>
+                            {searchResult.map((item) => (
+                                <AccountsItem key={item.id} data={item}></AccountsItem>
+                            ))}
+                        </div>
                     </PopperWrapper>
                 </div>
             )}

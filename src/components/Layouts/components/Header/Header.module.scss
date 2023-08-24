@@ -8,6 +8,11 @@
     box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12);
     display: flex;
     justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: var(--white);
+    z-index: 10;
 }
 .inner {
     height: 100%;
@@ -17,8 +22,6 @@
     justify-content: space-between;
     padding: 0 var(--default-layout-horizontal-spacer);
 }
-
-
 
 .btn-more {
     font-size: 2rem;
