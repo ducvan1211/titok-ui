@@ -1,4 +1,5 @@
 import HeadlessTippy from '@tippyjs/react/headless';
+import * as searchService from '~/apiServices/searchService';
 import classNames from 'classnames/bind';
 import styles from './Search.module.scss';
 import AccountsItem from '~/components/AccountItem';
@@ -29,16 +30,15 @@ function Search() {
             return;
         }
         setLoading(true);
+        const fetchApi = async () => {
+            setLoading(true);
 
-        fetch(`https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(debounced)}&type=less`)
-            .then((res) => res.json())
-            .then((res) => {
-                setSearchResult(res.data);
-                setLoading(false);
-            })
-            .catch(() => {
-                setLoading(false);
-            });
+            const result = await searchService.search(debounced);
+
+            setSearchResult(result);
+            setLoading(false);
+        };
+        fetchApi();
     }, [debounced]);
     return (
         <HeadlessTippy
