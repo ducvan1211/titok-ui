@@ -1,5 +1,6 @@
+import PropTypes from 'prop-types';
 import HeadlessTippy from '@tippyjs/react/headless';
-import * as searchService from '~/apiServices/searchService';
+import * as searchService from '~/services/searchService';
 import classNames from 'classnames/bind';
 import styles from './Search.module.scss';
 import AccountsItem from '~/components/AccountItem';
@@ -90,5 +91,7 @@ function Search() {
         </HeadlessTippy>
     );
 }
-
+AccountsItem.propTypes = {
+    data: PropTypes.object,
+};
 export default Search;
