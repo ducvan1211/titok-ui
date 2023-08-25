@@ -62,6 +62,6 @@ function Menu({ children, items = [], hideOnClick = false }) {
 Menu.propTypes = {
     children: PropTypes.node.isRequired,
     items: PropTypes.array,
-    hideOnClick: PropTypes.func,
+    hideOnClick: PropTypes.bool,
 };
 export default Menu;
